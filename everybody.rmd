@@ -1,5 +1,5 @@
 ---
-title: "Aids Drug LGBT"
+title: "Aids Drug Everybody"
 author: "Chelsia Zetina"
 date: "May 4, 2019"
 output: html_document
@@ -10,7 +10,6 @@ require(tidyverse)
 require(tigerstats)
 require(dplyr)
 avast <-read.csv(file="avastivironal.csv",header=TRUE)
-avast=filter(avast, LBGT=="yes")
 
 ```
 
@@ -18,7 +17,7 @@ avast=filter(avast, LBGT=="yes")
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new preventative aides vaccine is being tested in Clinical trials to keep AIDS from occuring. We want to find out out whether or not the vaccine is effective to LGBT drug users (no vs.yes). We want to consider the effectiveness of the vaccine across this group. 
+A new preventative aides vaccine is being tested in Clinical trials to keep AIDS from occuring.  We want to consider the effectiveness of the vaccine or the placebo in regards to everyone as a whole. 
 
 Does the drug have any affect on whether one contracts AIDS or not. 
 
@@ -35,7 +34,7 @@ For each hypothesis test the graphical summary will be a bar plot, the numerical
 
 #Results general effectiveness
 
-Is the vaccine effective in the population of Women
+Is the vaccine effective in the population of everyone
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -49,7 +48,7 @@ Is the vaccine effective in the population of Women
 barchartGC(~infected+treatment, data=avast, type='percent') 
 ```
   
-  This bar chart shows that the LGBT group using the placebo has a greater chance of contracting AIDS rather than the LGBT group using the vaccine. 
+  This bar chart shows that everyone using the placebo has a greater chance of getting AIDS rather than the group using the vaccine. 
 
 ### Numerical Descriptive Results
 
@@ -62,7 +61,7 @@ rowPerc(genTable)
 colPerc(genTable)
 ```
 
-This table shows the LGBT group contracting AIDS, 25% used the vaccine and 75% used the placebo.
+This table shows everyone contracting AIDS, 25% used the vaccine and 75% used the placebo.
 
 ## Inferential Results
 
@@ -73,19 +72,19 @@ chisqtestGC(~treatment + infected, data=avast)
 ```
 
 
-The p-value is very small, printed as 0. Therefore we reject the null hypothesis, there is no relationship between taking the vaccine and getting AIDS. 
+The p-value is very small, printed as 0. So therefore we reject the null hypothesis that there is no relationship between taking the vaccine and getting AIDS. 
 
-#Results in drug use effectiveness for LGBT group
+#Results in drug use effectiveness for everyone
 Does drug use make a difference in vaccine effectiveness?
 
 ```{r}
 fisher.test(genTable)
 ```
-The odds of getting AIDS is 0.35 to 1, if you take the drug. 
+The odds of getting AIDS is 0.35 to 1, if taking the vaccine. 
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variables causes the other, or whether they perhaps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
-The conclusion is the LGBT community using the vaccine are less likely to contract AIDS than using the placebo. The P-value=4.23e-08, I reject the null hypothesis, due to the information provided above that shows the effectiveness of using the vaccine rather than the placebo. The vaccine is helping people with not contracting AIDS.
+The conclusion is that everyone using the vaccine is less likely contract AIDS than using the placebo. The P-value=4.23e-08, I reject the null hypothesis, due to the information provided above that shows the effectiveness of using the vaccine rather than the placebo. The vaccine is helping people with not contracting AIDS.

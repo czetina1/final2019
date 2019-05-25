@@ -11,21 +11,21 @@ require(tigerstats)
 require(dplyr)
 avast <-read.csv(file="avastivironal.csv",header=TRUE)
 avast=filter(avast, Ivdrug=="user")
-
 ```
 
 # Introduction
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new preventative aides vaccine is being tested in Clinical trials to keep AIDS from occuring. We want to find out out whether or not the vaccine is effective to IV drug users (free vs. user). We want to consider the effectiveness of the vaccine across this group. 
+A new preventative AIDS vaccine is being tested in Clinical trials to keep AIDS from occuring. We want to find out out whether or not the vaccine is effective to IV drug users (free vs. user). We want to consider the effectiveness of the vaccine across this group. 
 
-Does have any affect on whether one contracts AIDS or not. 
+
+Does the drug have any affect on whether one contracts AIDS or not. 
 
 $H_0:$ The drug has no effect on whether one contracts AIDS or not
 
 
-$H_A:$ The drug has an effect on whether the drug has any protection against contracting AIDS
+$H_A:$ The drug has an effect on whether one contracts AIDS or not
 
 # Methods
 
@@ -45,7 +45,7 @@ Is the vaccine effective in the general population
 ```{r}
 barchartGC(~infected+treatment, data=avast, type='percent') 
 ```
-This bar chart shows that people that are receiving the vaccine are more likely to get aids than people who received the placebo.
+  This bar chart shows that the IV Drug Users group using the vaccine has a greater chance of contracting AIDS rather than the IV Drug Users using the placebo. 
 
 
 ### Numerical Descriptive Results
@@ -55,9 +55,11 @@ This bar chart shows that people that are receiving the vaccine are more likely 
 ```{r}
 genTable = xtabs(~treatment+infected, data=avast)
 print(genTable)
+rowPerc(genTable)
+colPerc(genTable)
 ```
 
-This table shows all the participants of the trial that are getting the vaccine and the results of being infected with AIDS.
+This table shows IV Drug Users contracting AIDS; 72% used the vaccine and 28% used the placebo.
 
 ## Inferential Results
 
@@ -67,26 +69,27 @@ This table shows all the participants of the trial that are getting the vaccine 
 chisqtestGC(~treatment + infected, data=avast)
 ```
 
+
+The p-value is very small, printed as 0. Therefore we reject the null hypothesis, there is no relationship between taking the vaccine and getting AIDS.
+
+
 #Results in IV drug use effectiveness
 Does drug use make a difference in vaccine effectiveness?
 
 ```{r}
-xtabs(~treatment+infected, data=avast)
+fisher.test(genTable)
 ```
 
+The odds of getting AIDS is 2.72 to 1, if you take the drug.
 
 # Discussion and Conclusion
 
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variables causes the other, or whether they perhaps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
-$H_0$ :  The vaccine has no effect in the contacting aids against the whole population of participants.  
-
-$H_A$ :  The Vaccine will absolutely effecting in protecting a person from contracting aids.  
+The conclusion is the IV Drug User community using the vaccine are more likely to contract AIDS than using the placebo. The P-value=2.998e-06, I reject the null hypothesis, due to the information provided above that shows the ineffectiveness of using the vaccine rather than the placebo. The vaccine is not helping people contract AIDS.
 
 
 
 
-It is hard to clearly look at the results when just looking at the bar graghs and seeing if the vaccine is effective across all users.  When looking at the numerical data it is easier to see what has a correlation and not. Deciding what is important to the study and analyzing if Avastirinol is effective in preventing aids.  When analyzing the effectiveness of the drug we looked at if the people were drug users, the gender, and the sexual orientation of the person receiving the vaccine or placebo.  Putting all of the data together we do not see a direct correlation from a person receiving Avastirinol and the effectiveness. 
-
-  There is little data comparing when a person has aids or not and if they have received the vaccine the P value is less than  %. We look at the P value because it shows the probability of the same study happening again. If the P value is less than % if rejects the Ho , if the P value is more than we have to accept it.  Since the P value is less that it is not acceptable and does not show any correlation.  The P value when comparing IV drug users and receiving the vaccine is also less than %.  However comparing the sex and their sexual orientation to whether or not they have received the vaccine or not the P value was more than %.  When comparing the sex of the person to the treatment was more than %. The P value for comparing the sexual orientation and the treatment was more  than %. Because the P value was not more than % on all the data across the board this vaccine is deemed to be not useful. 
+ 

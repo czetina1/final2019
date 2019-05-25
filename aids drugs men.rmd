@@ -18,7 +18,7 @@ avast=filter(avast, sex=="M")
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new preventative aides vaccine is being tested in Clinical trials to keep AIDS from occuring. We want to find out out whether or not the vaccine is effective to IV drug users (free vs. user). We want to consider the effectiveness of the vaccine across this group. 
+A new preventative aides vaccine is being tested in Clinical trials to keep AIDS from occuring. We want to find out out whether or not the vaccine is effective to Men drug users (F vs.M). We want to consider the effectiveness of the vaccine across this group. 
 
 Does the drug have any affect on whether one contracts AIDS or not. 
 
@@ -49,7 +49,7 @@ Is the vaccine effective in the population of men
 barchartGC(~infected+treatment, data=avast, type='percent') 
 ```
   
-  This bar chart shows that people that are receiving the vaccine are less likely to get aids than people who received the placebo.
+  This bar chart shows that Men receiving the vaccine are less likely to get aids rather than Men who take the placebo.
 
 
 ### Numerical Descriptive Results
@@ -63,7 +63,7 @@ rowPerc(genTable)
 colPerc(genTable)
 ```
 
-This table shows that men receiving the vaccine are less likely to get AIDS than others that are taking the placebo.
+This table shows that men who contracted AIDS, 30% used drug and nearly 70% used placebo.
 
 ## Inferential Results
 
@@ -73,17 +73,20 @@ This table shows that men receiving the vaccine are less likely to get AIDS than
 chisqtestGC(~treatment + infected, data=avast)
 ```
 
-#Results in IV drug use effectiveness
+  The p-value is 0. Therefore we reject the null hypothesis, there is no relationship between taking the vaccine and getting AIDS.
+
+
+#Results in Men drug use effectiveness
 Does drug use make a difference in vaccine effectiveness?
 
 ```{r}
 fisher.test(genTable)
 ```
-The odds of getting AIDS is 70% if the IV user is taking the vaccine than others using the placebo.
+The odds of getting AIDS is 0.45 to 1, if you take the drug.
 
 # Discussion and Conclusion
 
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variables causes the other, or whether they perhaps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
-The conclusion is men using the vaccine are less likely to get AIDS than using the placebo. The P-value is p-value = 2.333e-07, I reject the null hypothesis due to the information provided above that shows the effectiveness of using the vaccine rather than the placebo.
+The conclusion is Men using the vaccine are less likely to contract AIDS if using the vaccine rather than the placebo. The P-value=< 2.2e-16, I reject the null hypothesis, due to the information provided above taht shows the effectiveness of using the vaccine rather than the placebo. The vaccine is helping Men with not contracting AIDS.
